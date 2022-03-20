@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
     <title>Register</title>
 </head>
 <body>
@@ -18,7 +19,14 @@
 
     </header>
     <main>
-        <form action="#">
+        <form class="capture-form" action="#">
+
+            <h3>Add a new user</h3>
+
+            <p id="alertError" class="alert-error hide">
+                Fill out all the inputs!
+            </p>
+
             <div class="input-container">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="txtFirstname">
@@ -63,11 +71,12 @@
                 <label for="color">color:</label>
                 <input type="color" id="txtColor">
             </div>
-            
+            <button id="btnSave" onclick="register()">Register</button>
         </form>
-        <button onclick="register()">Register</button>
+        
     </main>
-    <script src="register.js"></script>
+    <script src="scripts/storeManager.js"></script>
+    <script src="scripts/register.js"></script>
 </body>
 
 </html>
