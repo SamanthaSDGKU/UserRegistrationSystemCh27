@@ -27,18 +27,35 @@ function isValid(user){
         valid=false;
         console.log("Your need to add a password");
     }
-
-    if(!valid){
-        console.error("Missing data");
-        $("#alertError").removeClass("hide");
-        setTimeout(function(){
-            $("#alertError").addClass("hide");
-        },2000);
+     if(!valid){
+        displayError("Missing data");  
     }
     return valid;
 }
 
+function validatePass(){
+    //get the values from the form
+    let txtPass=$("#txtPassword");//getting the input from the DOM, so I only travel the DOM once.
+    let password=txtPass.val();
+
+    if(password.length<6){// is password less than 6 characters?
+        txtPass.css("border","2px solid red"); //jquery function to change the css
+        displayError("Error: password too short :( !");
+    }else{
+        txtPass.css("border","2px solid green"); //jquery function to change the css
+        hideError();
+    }
+}
+function displayError(msg){
+    $("#alertError").removeClass("hide").text(msg);
+
+}
+function hideError(){
+    $("#alertError").addClass("hide");
+}
 function register(){
+
+    
     let inputFirstName = $('#txtFirstname').val();/*check your id on the html*/
     let inputLastName = $('#txtLastname').val();
     let inputEmail = $('#txtEmail').val();
@@ -61,6 +78,6 @@ function register(){
 function init(){
     console.log("Registration");
     //hook events
-
+    $("#txtPassword").change(validatePass);
 }
 window.onload=init;
